@@ -131,12 +131,12 @@ To analyse vendor sales performance by evaluating key metrics such as total sale
         ON ps.VendorNumber = fs.VendorNumber
         ORDER BY ps.TotalPurchaseDollars DESC""",engine)
 
-- Step 11 : Final Summary table created from the tables available which now will be used for analysis for vendor sales performance. 
+- Step 6 : Final Summary table created from the tables available which now will be used for analysis for vendor sales performance. 
 Snap of newly created table
 
 ![Snap_1](https://github.com/user-attachments/assets/d264c388-36a8-444f-841d-f6b9cb1b2372)
 
-- Step 12 : Further EDA(Exploratory Data Analysis) was performed to check parameters such as null values, data types etc. 
+- Step 7 : Further EDA(Exploratory Data Analysis) was performed to check parameters such as null values, data types etc. 
 
 1 - Finding for null values:
         
@@ -159,7 +159,7 @@ Some column such as Volume, TotalSalesQuantity have integer values but data type
         vendor_sales_summary['Volume'] = vendor_sales_summary['Volume'].astype('float64')
         vendor_sales_summary['TotalSalesQuantity'] = vendor_sales_summary['TotalSalesQuantity'].astype('int')
 
- - Step 16 : Further calculated some new columns and added to our summary table.
+ - Step 8 : Further calculated some new columns and added to our summary table.
 
  - Following columns were added:
 
@@ -175,26 +175,26 @@ Some column such as Volume, TotalSalesQuantity have integer values but data type
         vendor_sales_summary['SalePurchaseRatio'] = vendor_sales_summary['TotalSalesDollars']/vendor_sales_summary['TotalPurchaseDollars']
 
  
- Step 8 : Updated our final summary table with filtering to take only positive gross profit.
+ Step 9 : Updated our final summary table with filtering to take only positive gross profit.
 
         # Updated vendor_sales_summary
 
         vendor_sales_summary = pd.read_sql("SELECT * FROM vendor_sales_summary  where GrossProfit>0 ", engine)
  
-Step 9 : Describing the summary table.
+Step 10 : Describing the summary table.
  
  ![Snap_Percentage](https://github.com/user-attachments/assets/37459c6c-921b-49af-8113-31eb96be1eed)
 
  
- - Step 17 : The final summary table is pushed into the database. 
+ - Step 11 : The final summary table is pushed into the database. 
 
- - Step 18 : Now we import the summary table to Power BI from the Microsoft SQL server and transform our data using Power Query editor.
+ - Step 12 : Now we import the summary table to Power BI from the Microsoft SQL server and transform our data using Power Query editor.
  
- - Step 18 : The final dashboard created using Power BI:
+ - Step 13 : The final dashboard created using Power BI:
  
  ![Snap_3](https://github.com/user-attachments/assets/12ca79aa-ebba-437b-be9a-035c7825f3c2)
  
- - Step 18 : The report was then published to Power BI Service.
+ - Step 14 : The report was then published to Power BI Service.
  
  
 ![Publish_Message](https://github.com/user-attachments/assets/878f9aaa-89da-4135-8ff5-e22a4db65416)
